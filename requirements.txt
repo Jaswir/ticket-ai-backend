@@ -1,1 +1,9 @@
 Django==4.1.3
+pymongo[srv]
+llama-index
+llama-index-vector-stores-mongodb
+llama-index-embeddings-openai
+llama-index-readers-mongodb
+datasets
+pandas
+djangorestframework
