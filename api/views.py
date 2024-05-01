@@ -43,26 +43,6 @@ collection = db[COLLECTION_NAME]
 def home(request):
     return HttpResponse("Hello, Django!")
 
-@api_view(["GET"])
-def getAnswer(request, question):
-    results = collection.aggregate(
-        [
-            {
-                "$vectorSearch": {
-                    "queryVector": generate_embedding(question),
-                    "path": "embedding",
-                    "numCandidates": 100,
-                    "limit": 3,
-                    "index": "vector_index",
-                }
-            }
-        ]
-    )
-
-    results = list(results)
-
-    firstDocText = results[0]['text']
-    return JsonResponse(firstDocText, safe=False)
 
 # query = "What is blackboard learn?"
 
